@@ -5,11 +5,11 @@
 package SelectedProductFace;
 
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
-import EditCartTable.SHSTable;
+import EditCartTable.vaseline;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
 import MainForms.Face;
-import PaymentForms.SHSPayment;
+import PaymentForms.VaselinePayment;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -107,7 +107,7 @@ public class Vaseline extends javax.swing.JFrame {
         getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 200, 30));
 
         lblPrice.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        lblPrice.setText("PHP 100");
+        lblPrice.setText("PHP 130");
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 90, 30));
 
         jComboBox2.setBackground(new java.awt.Color(0, 153, 153));
@@ -135,8 +135,6 @@ public class Vaseline extends javax.swing.JFrame {
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
-        String gender = "N/A";
-        String size = "N/A";
 
         // Validate if the user selected a quantity
         if (jComboBox2.getSelectedIndex() == 0) { // Assuming the first item is "QUANTITY" or empty
@@ -156,7 +154,7 @@ public class Vaseline extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -173,7 +171,7 @@ public class Vaseline extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        SHSTable editCart = new SHSTable(cartModel);
+        vaseline editCart = new vaseline(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
@@ -194,7 +192,7 @@ public class Vaseline extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
          GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        SHSPayment pf = new SHSPayment();
+        VaselinePayment pf = new VaselinePayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();

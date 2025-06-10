@@ -5,11 +5,11 @@
 package SelectedProductFace;
 
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
-import EditCartTable.SBMATable;
+import EditCartTable.myra;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
 import MainForms.Face;
-import PaymentForms.SBMAPayment;
+import PaymentForms.MyraPayment;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -137,8 +137,6 @@ public class Myra extends javax.swing.JFrame {
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
-        String gender = "N/A";
-        String size = "N/A";
 
         // Validate if the user selected a quantity
         if (jComboBox2.getSelectedIndex() == 0) { // Assuming the first item is "QUANTITY" or empty
@@ -158,7 +156,7 @@ public class Myra extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -175,7 +173,7 @@ public class Myra extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        SBMATable editCart = new SBMATable(cartModel);
+        myra editCart = new myra(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
@@ -196,7 +194,7 @@ public class Myra extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
         GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        SBMAPayment pf = new SBMAPayment();
+        MyraPayment pf = new MyraPayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();

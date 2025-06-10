@@ -4,11 +4,11 @@
  */
 package SelectedProductShampoo;
 
-import EditCartTable.TraditionalTable;
+import EditCartTable.dove;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
 import MainForms.Shampoo;
-import PaymentForms.TraditionalPayment;
+import PaymentForms.DoveShampooPayment;
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -36,11 +36,9 @@ public class Dove extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        genderComboBox = new javax.swing.JComboBox<>();
         quantityComboBox = new javax.swing.JComboBox<>();
         imageLabel = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
-        sizeComboBox = new javax.swing.JComboBox<>();
         lblPrice = new javax.swing.JLabel();
         AddToCart1 = new javax.swing.JButton();
         Back = new javax.swing.JButton();
@@ -52,18 +50,6 @@ public class Dove extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        genderComboBox.setBackground(new java.awt.Color(0, 153, 153));
-        genderComboBox.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        genderComboBox.setForeground(new java.awt.Color(255, 255, 255));
-        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "GENDER", "MALE", "FEMALE" }));
-        genderComboBox.setToolTipText("");
-        genderComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                genderComboBoxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(genderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 100, 30));
-
         quantityComboBox.setBackground(new java.awt.Color(0, 153, 153));
         quantityComboBox.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         quantityComboBox.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,7 +57,7 @@ public class Dove extends javax.swing.JFrame {
         quantityComboBox.setToolTipText("");
         quantityComboBox.setMinimumSize(new java.awt.Dimension(81, 22));
         quantityComboBox.setPreferredSize(new java.awt.Dimension(81, 22));
-        getContentPane().add(quantityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 100, 30));
+        getContentPane().add(quantityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 100, 30));
 
         imageLabel.setBackground(new java.awt.Color(255, 255, 0));
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SelectedProductShampoo/dovef.png"))); // NOI18N
@@ -86,21 +72,8 @@ public class Dove extends javax.swing.JFrame {
         lblName.setOpaque(true);
         getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 200, 30));
 
-        sizeComboBox.setBackground(new java.awt.Color(0, 153, 153));
-        sizeComboBox.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        sizeComboBox.setForeground(new java.awt.Color(255, 255, 255));
-        sizeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SIZE", "XS", "S", "M", "L", "XL" }));
-        sizeComboBox.setMinimumSize(new java.awt.Dimension(81, 22));
-        sizeComboBox.setPreferredSize(new java.awt.Dimension(81, 22));
-        sizeComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sizeComboBoxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(sizeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 100, 30));
-
         lblPrice.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        lblPrice.setText("PHP 350");
+        lblPrice.setText("PHP 120");
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 90, 30));
 
         AddToCart1.setBackground(new java.awt.Color(0, 153, 153));
@@ -159,29 +132,11 @@ public class Dove extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sizeComboBoxActionPerformed
-
     private void AddToCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToCart1ActionPerformed
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
-        String gender = genderComboBox.getSelectedItem().toString();
-        String size = sizeComboBox.getSelectedItem().toString();
-
-        // Validate if the user selected a gender
-        if (genderComboBox.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Please select a gender.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Validate if the user selected a size
-        if (sizeComboBox.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Please select a size.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
+       
         // Validate if the user selected a quantity
         if (quantityComboBox.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -200,7 +155,7 @@ public class Dove extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -223,7 +178,7 @@ public class Dove extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        TraditionalTable editCart = new TraditionalTable(cartModel);
+        dove editCart = new dove(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
@@ -238,30 +193,11 @@ public class Dove extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
         GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        TraditionalPayment pf = new TraditionalPayment();
+        DoveShampooPayment pf = new DoveShampooPayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();
     }//GEN-LAST:event_CheckOutActionPerformed
-
-    private void genderComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderComboBoxActionPerformed
-String selectedGender = (String) genderComboBox.getSelectedItem(); // Get selected gender
-
-    String imagePath = "/image/TraditionalMale.png"; // Default to male
-    if ("FEMALE".equals(selectedGender)) {
-        imagePath = "/image/TraditionalFemale.png"; // Change to female
-    }
-
-    java.net.URL imgURL = getClass().getResource(imagePath);
-    
-    if (imgURL != null) {
-        imageLabel.setIcon(new ImageIcon(imgURL)); // Set the new image
-    } else {
-        System.out.println("Image not found: " + imagePath); // Debugging output
-    }
-
-    imageLabel.revalidate(); // Refresh the label
-    imageLabel.repaint();    }//GEN-LAST:event_genderComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,12 +246,10 @@ String selectedGender = (String) genderComboBox.getSelectedItem(); // Get select
     private javax.swing.JButton Back;
     private javax.swing.JButton CheckOut;
     private javax.swing.JButton EditCart;
-    private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JComboBox<String> quantityComboBox;
-    private javax.swing.JComboBox<String> sizeComboBox;
     // End of variables declaration//GEN-END:variables
 }

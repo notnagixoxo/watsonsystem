@@ -5,11 +5,11 @@
 package SelectedProductHealth;
 
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
-import EditCartTable.CapTable;
+import EditCartTable.amlodipine;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
 import MainForms.HealthForm;
-import PaymentForms.CapPayment;
+import PaymentForms.AmlodipinePayment;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -148,7 +148,7 @@ public class Amlodipine extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
         GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        CapPayment pf = new CapPayment();
+        AmlodipinePayment pf = new AmlodipinePayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();
@@ -162,14 +162,13 @@ public class Amlodipine extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        CapTable editCart = new CapTable(cartModel);
+        amlodipine editCart = new amlodipine(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
 
     private void AddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToCartActionPerformed
-        String gender = "N/A";
-        String size = "N/A";
+
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
@@ -192,7 +191,7 @@ public class Amlodipine extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);

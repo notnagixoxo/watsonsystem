@@ -6,10 +6,10 @@ package SelectedProductHealth;
 
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
-import EditCartTable.MassagerTable;
+import EditCartTable.paracetamol;
 import MainForms.HealthForm;
-import PaymentForms.MassagerPayment;
-import PaymentForms.CapPayment;
+import PaymentForms.ParacetamolPayment;
+import PaymentForms.AmlodipinePayment;
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -88,7 +88,7 @@ public class Paracetamol extends javax.swing.JFrame {
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 120, 30));
 
         lblPrice.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        lblPrice.setText("PHP 150");
+        lblPrice.setText("PHP 35");
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 90, 30));
 
         CheckOut.setBackground(new java.awt.Color(0, 153, 153));
@@ -140,8 +140,8 @@ public class Paracetamol extends javax.swing.JFrame {
         }
 
         // Open the EditCartTable with the existing cart model
-        MassagerTable editCart = new MassagerTable(cartModel);
-        editCart.setVisible(true); //Open MassagerTable Form
+        paracetamol editCart = new paracetamol(cartModel);
+        editCart.setVisible(true); //Open paracetamol Form
         dispose(); // Close the current window
 
     }//GEN-LAST:event_EditCartActionPerformed
@@ -162,7 +162,7 @@ public class Paracetamol extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
         GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-       MassagerPayment pf = new MassagerPayment();
+       ParacetamolPayment pf = new ParacetamolPayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();
@@ -173,8 +173,7 @@ public class Paracetamol extends javax.swing.JFrame {
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
-        String gender = "N/A";
-        String size = "N/A";
+       
 
         // Validate if the user selected a quantity
         if (jComboBox2.getSelectedIndex() == 0) { // Assuming the first item is "QUANTITY" or empty
@@ -195,7 +194,7 @@ public class Paracetamol extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);

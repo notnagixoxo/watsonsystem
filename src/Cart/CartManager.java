@@ -28,7 +28,7 @@ public class CartManager {
 
     // Table model for storing cart items with columns: Item, Gender, Size, Quantity, Price, and Total
     private static DefaultTableModel cartModel = new DefaultTableModel(
-            new String[]{"Item", "Gender", "Size", "Quantity", "Price", "Total"}, 0
+            new String[]{"Item", "Quantity", "Price", "Total"}, 0
     );
 
     /**
@@ -67,7 +67,7 @@ public class CartManager {
 
         // Loop through all rows in the cart to sum up the total price
         for (int i = 0; i < cartModel.getRowCount(); i++) {
-            double itemTotal = Double.parseDouble(cartModel.getValueAt(i, 5).toString());
+            double itemTotal = Double.parseDouble(cartModel.getValueAt(i, 3).toString());
             overallTotal += itemTotal;
         }
 

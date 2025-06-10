@@ -5,11 +5,11 @@
 package SelectedProductHealth;
 
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
-import EditCartTable.DuffleBagTable;
+import EditCartTable.centrumadvance;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
 import MainForms.HealthForm;
-import PaymentForms.DuffleBagPayment;
+import PaymentForms.CentrumAdvancePayment;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -65,7 +65,7 @@ public class Centrum extends javax.swing.JFrame {
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 100, 30));
 
         lblPrice.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        lblPrice.setText("PHP 120");
+        lblPrice.setText("PHP 60");
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 90, 30));
 
         Back.setBackground(new java.awt.Color(153, 153, 153));
@@ -137,8 +137,7 @@ public class Centrum extends javax.swing.JFrame {
     }//GEN-LAST:event_BackActionPerformed
 
     private void AddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToCartActionPerformed
-        String gender = "N/A";
-        String size = "N/A";
+        
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
@@ -161,7 +160,7 @@ public class Centrum extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -177,7 +176,7 @@ public class Centrum extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        DuffleBagTable editCart = new DuffleBagTable(cartModel);
+        centrumadvance editCart = new centrumadvance(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
@@ -192,7 +191,7 @@ public class Centrum extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
         GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        DuffleBagPayment pf = new DuffleBagPayment();
+        CentrumAdvancePayment pf = new CentrumAdvancePayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();

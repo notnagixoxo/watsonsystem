@@ -4,14 +4,14 @@
  */
 package SelectedProductConditionr;
 
-import EditCartTable.TraditionalTable;
+import EditCartTable.dove;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
-import EditCartTable.TraditionalPantsTable;
+import EditCartTable.tresemme;
 import MainForms.Conditioner;
 import MainForms.Shampoo;
-import PaymentForms.TraditionalPantsPayment;
-import PaymentForms.TraditionalPayment;
+import PaymentForms.TresemmePayment;
+import PaymentForms.DoveShampooPayment;
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -44,7 +44,6 @@ public class Tresemme extends javax.swing.JFrame {
         Back = new javax.swing.JButton();
         EditCart = new javax.swing.JButton();
         CheckOut = new javax.swing.JButton();
-        sizeComboBox = new javax.swing.JComboBox<>();
         quantityComboBox = new javax.swing.JComboBox<>();
         AddToCart1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -67,7 +66,7 @@ public class Tresemme extends javax.swing.JFrame {
         getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 200, 30));
 
         lblPrice.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        lblPrice.setText("PHP 350");
+        lblPrice.setText("PHP 110");
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 90, 30));
 
         Back.setBackground(new java.awt.Color(153, 153, 153));
@@ -106,19 +105,6 @@ public class Tresemme extends javax.swing.JFrame {
         });
         getContentPane().add(CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 100, 20));
 
-        sizeComboBox.setBackground(new java.awt.Color(0, 153, 153));
-        sizeComboBox.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
-        sizeComboBox.setForeground(new java.awt.Color(255, 255, 255));
-        sizeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SIZE", "XS", "S", "M", "L", "XL" }));
-        sizeComboBox.setMinimumSize(new java.awt.Dimension(81, 22));
-        sizeComboBox.setPreferredSize(new java.awt.Dimension(81, 22));
-        sizeComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sizeComboBoxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(sizeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 100, 30));
-
         quantityComboBox.setBackground(new java.awt.Color(0, 153, 153));
         quantityComboBox.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 12)); // NOI18N
         quantityComboBox.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,7 +117,7 @@ public class Tresemme extends javax.swing.JFrame {
                 quantityComboBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(quantityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 100, 30));
+        getContentPane().add(quantityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 100, 30));
 
         AddToCart1.setBackground(new java.awt.Color(0, 153, 153));
         AddToCart1.setFont(new java.awt.Font("Microsoft YaHei", 1, 10)); // NOI18N
@@ -167,7 +153,7 @@ public class Tresemme extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        TraditionalPantsTable editCart = new TraditionalPantsTable(cartModel);
+        tresemme editCart = new tresemme(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
@@ -182,15 +168,11 @@ public class Tresemme extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
          GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        TraditionalPantsPayment pf = new TraditionalPantsPayment();
+        TresemmePayment pf = new TresemmePayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();
     }//GEN-LAST:event_CheckOutActionPerformed
-
-    private void sizeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sizeComboBoxActionPerformed
 
     private void quantityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityComboBoxActionPerformed
         // TODO add your handling code here:
@@ -201,15 +183,7 @@ public class Tresemme extends javax.swing.JFrame {
         int quantity = 0;
         double price;
         String gender = "N/A";
-        String size = sizeComboBox.getSelectedItem().toString();
-
-        // Validate if the user selected a gender
-        // Validate if the user selected a size
-        if (sizeComboBox.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Please select a size.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
+       
         // Validate if the user selected a quantity
         if (quantityComboBox.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Please select a valid quantity.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -228,7 +202,7 @@ public class Tresemme extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName, quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -313,6 +287,5 @@ public class Tresemme extends javax.swing.JFrame {
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JComboBox<String> quantityComboBox;
-    private javax.swing.JComboBox<String> sizeComboBox;
     // End of variables declaration//GEN-END:variables
 }

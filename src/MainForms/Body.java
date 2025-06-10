@@ -52,7 +52,7 @@ public class Body extends javax.swing.JFrame {
         });
         getContentPane().add(Tumbler, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 260, 177));
 
-        Tshirt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/DOVE (1).png"))); // NOI18N
+        Tshirt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/DOVESOAP.png"))); // NOI18N
         Tshirt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TshirtActionPerformed(evt);

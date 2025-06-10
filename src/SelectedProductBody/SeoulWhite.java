@@ -5,11 +5,11 @@
 package SelectedProductBody;
 
 import WatsonsSystem.GcashSuccessfulPurchaseForm;
-import EditCartTable.JacketTable;
+import EditCartTable.seoulwhite;
 import Cart.CartManager;
 import static Cart.CartManager.getCartModel;
 import MainForms.Body;
-import PaymentForms.JacketPayment;
+import PaymentForms.SeoulWhitePayment;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -114,7 +114,7 @@ public class SeoulWhite extends javax.swing.JFrame {
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 120, 30));
 
         lblPrice.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        lblPrice.setText("PHP 600");
+        lblPrice.setText("PHP 80");
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 90, 30));
 
         imageLabel.setBackground(new java.awt.Color(255, 255, 0));
@@ -139,8 +139,7 @@ public class SeoulWhite extends javax.swing.JFrame {
         String itemName = lblName.getText(); // Get item name
         int quantity = 0;
         double price;
-        String gender = "N/A";
-        String size = "N/A";
+     
 
         // Validate if the user selected a quantity
         if (jComboBox2.getSelectedIndex() == 0) { // Assuming the first item is "QUANTITY" or empty
@@ -160,7 +159,7 @@ public class SeoulWhite extends javax.swing.JFrame {
 
         DefaultTableModel cartModel = getCartModel(); // Ensure this method exists and retrieves a shared model
         if (cartModel != null) {
-            cartModel.addRow(new Object[]{itemName, gender, size, quantity, price, total});
+            cartModel.addRow(new Object[]{itemName,quantity, price, total});
 
             // Show confirmation message
             JOptionPane.showMessageDialog(this, itemName + " added to cart successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -177,7 +176,7 @@ public class SeoulWhite extends javax.swing.JFrame {
             return; // Stop further execution
         }
         // Open EditCartTable with the cart model
-        JacketTable editCart = new JacketTable(cartModel);
+        seoulwhite editCart = new seoulwhite(cartModel);
         editCart.setVisible(true);
         dispose();
     }//GEN-LAST:event_EditCartActionPerformed
@@ -192,7 +191,7 @@ public class SeoulWhite extends javax.swing.JFrame {
 
         // Proceed to successful purchase form
         GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        JacketPayment pf = new JacketPayment();
+        SeoulWhitePayment pf = new SeoulWhitePayment();
         sf.setPurchaseDetails(cartModel);
         pf.setVisible(true);
         dispose();
