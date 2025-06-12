@@ -120,7 +120,7 @@ public class Vaseline extends javax.swing.JFrame {
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 120, 30));
 
         imageLabel.setBackground(new java.awt.Color(255, 255, 0));
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/idlace/vaselinehbf.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imageofface/vaselinehbf.png"))); // NOI18N
         imageLabel.setOpaque(true);
         getContentPane().add(imageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 130));
 

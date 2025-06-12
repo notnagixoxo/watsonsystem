@@ -120,7 +120,7 @@ public class Myra extends javax.swing.JFrame {
         getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 120, 30));
 
         imageLabel.setBackground(new java.awt.Color(255, 255, 0));
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/idlace/myraf.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imageofface/myraf.png"))); // NOI18N
         imageLabel.setOpaque(true);
         getContentPane().add(imageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 130));
 
@@ -193,11 +193,13 @@ public class Myra extends javax.swing.JFrame {
         }
 
         // Proceed to successful purchase form
-        GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-        MyraPayment pf = new MyraPayment();
-        sf.setPurchaseDetails(cartModel);
-        pf.setVisible(true);
-        dispose();
+          // CORRECTED LOGIC:
+    // Only proceed to the payment form from here.
+    // The GcashSuccessfulPurchaseForm will be opened FROM MyraPayment.java
+    // AFTER the payment process is completed.
+    MyraPayment pf = new MyraPayment();
+    pf.setVisible(true); // Show the payment form
+    dispose(); // Close the current Myra product selection form
     }//GEN-LAST:event_CheckOutActionPerformed
 
     /**

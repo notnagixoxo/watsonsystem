@@ -291,8 +291,8 @@ public class GcashSuccessfulPurchaseForm extends javax.swing.JFrame {
         for (int i = 0; i < cartModel.getRowCount(); i++) {
             String itemName = cartModel.getValueAt(i, 0).toString(); // Get item name
             int quantity = Integer.parseInt(cartModel.getValueAt(i, 3).toString()); // Get quantity
-            double price = Double.parseDouble(cartModel.getValueAt(i, 4).toString()); // Get price per unit
-            double total = Double.parseDouble(cartModel.getValueAt(i, 5).toString()); // Get total price
+            double price = Double.parseDouble(cartModel.getValueAt(i, 5).toString()); // Get price per unit
+            double total = Double.parseDouble(cartModel.getValueAt(i, 6).toString()); // Get total price
 
             // Append details to respective lists, separated by commas
             itemsList.append(itemName).append(", ");

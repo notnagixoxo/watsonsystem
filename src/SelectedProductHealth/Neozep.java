@@ -120,7 +120,7 @@ public class Neozep extends javax.swing.JFrame {
         getContentPane().add(CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 100, 20));
 
         imageLabel.setBackground(new java.awt.Color(255, 255, 0));
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/accessories/neozepf.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imageofhealth/neozepf.png"))); // NOI18N
         imageLabel.setOpaque(true);
         getContentPane().add(imageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 130));
 

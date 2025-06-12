@@ -128,6 +128,11 @@ public class MyraPayment extends javax.swing.JFrame {
         number.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         number.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         number.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        number.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numberActionPerformed(evt);
+            }
+        });
         jPanel1.add(number, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 60, 131, -1));
 
         buttonGroup1.add(cash);
@@ -178,45 +183,48 @@ public class MyraPayment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gcashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gcashActionPerformed
-        lblNumber.setVisible(true);
-        number.setVisible(true);
-        lblError.setVisible(true);
+         lblNumber.setVisible(true);
+    number.setVisible(true);
+    lblError.setText("");
     }//GEN-LAST:event_gcashActionPerformed
 
     private void cashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cashActionPerformed
-        lblNumber.setVisible(true);
-        number.setVisible(true);
-        lblError.setVisible(true);
+        lblNumber.setVisible(false);
+    number.setVisible(false);
+    lblError.setText("");
     }//GEN-LAST:event_cashActionPerformed
 
     private void ConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmActionPerformed
+         if (gcash.isSelected()) {
         String contactNumber = number.getText();
 
         if (contactNumber.isEmpty()) {
             lblError.setText("Field cannot be empty!");
-        } else if (!contactNumber.matches("\\d+")) { // Check if input is NOT a number
+            return;
+        } else if (!contactNumber.matches("\\d+")) {
             lblError.setText("Only numbers are allowed!");
-        } else if (contactNumber.length() != 11) { // Check if not exactly 11 digits
+            return;
+        } else if (contactNumber.length() != 11) {
             lblError.setText("Number must be exactly 11 digits!");
-        } else {
-            // Store contact number in CartManager
-            CartManager.setContactNumber(contactNumber);
-
-            // Check which payment method is selected
-            if (gcash.isSelected()) {
-                GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
-                sf.setVisible(true);
-            } else if (cash.isSelected()) {
-                CashSuccessfulPurchaseForm sf = new CashSuccessfulPurchaseForm(CartManager.getCartModel());
-                sf.setVisible(true);
-            } else {
-                lblError.setText("Please select a payment method!");
-                return; // Stop execution if no payment method is selected
-            }
-
-            // Close current form
-            dispose();
+            return;
         }
+
+        // Store contact number in CartManager
+        CartManager.setContactNumber(contactNumber);
+
+        GcashSuccessfulPurchaseForm sf = new GcashSuccessfulPurchaseForm(CartManager.getCartModel());
+        sf.setVisible(true);
+        dispose();
+
+    } else if (cash.isSelected()) {
+        // No need to validate number for cash
+        CashSuccessfulPurchaseForm sf = new CashSuccessfulPurchaseForm(CartManager.getCartModel());
+        sf.setVisible(true);
+        dispose();
+
+    } else {
+        lblError.setText("Please select a payment method!");
+    }
     }//GEN-LAST:event_ConfirmActionPerformed
 
     private void BackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackActionPerformed
@@ -224,6 +232,10 @@ public class MyraPayment extends javax.swing.JFrame {
         bc.show();
         dispose();
     }//GEN-LAST:event_BackActionPerformed
+
+    private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numberActionPerformed
 
     /**
      * @param args the command line arguments

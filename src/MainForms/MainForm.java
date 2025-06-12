@@ -6,7 +6,7 @@ package MainForms;
 
 /**
  *
- * @author Ryoji Lagaras
+ * 
  */
 public class MainForm extends javax.swing.JFrame {
 

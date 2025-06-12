@@ -118,7 +118,7 @@ public class SeoulWhite extends javax.swing.JFrame {
         getContentPane().add(lblPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 90, 30));
 
         imageLabel.setBackground(new java.awt.Color(255, 255, 0));
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/merchandise/seoulf.png"))); // NOI18N
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imageofbodysoaps/seoulf.png"))); // NOI18N
         imageLabel.setOpaque(true);
         getContentPane().add(imageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 140, 130));
 
